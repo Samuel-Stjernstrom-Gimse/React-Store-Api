@@ -1,0 +1,91 @@
+type Props = {
+	isOpen: boolean
+	setIsOpen: (isOpen: boolean) => void
+	cart: any
+	setSearch: any
+}
+
+export const Navbar = (props: Props) => {
+	const handleIsOpen = () => {
+		props.setIsOpen(!props.isOpen)
+	}
+
+	const handleSearch = (event: React.ChangeEvent<HTMLInputElement>): void => {
+		props.setSearch(event.target.value)
+	}
+
+	return (
+		<>
+			<div
+				style={{
+					width: '100vw',
+					height: '4rem',
+					margin: 0,
+					position: 'fixed',
+					top: 0,
+					left: 0,
+					display: 'flex',
+					alignItems: 'center',
+					color: 'grey',
+					justifyContent: 'center',
+					gap: '2rem',
+					backgroundColor: 'rgb(14,14,14)',
+					backgroundImage: 'url(src/assets/img/lines.svg)',
+					backgroundSize: 'cover',
+					backgroundBlendMode: 'lighten',
+					boxShadow: '1px 0 10px black',
+					zIndex: '2'
+				}}
+			>
+				<h1 style={{ position: 'fixed', left: '1%', color: 'white' }}>REACT STORE</h1>
+				<input
+					placeholder={'search'}
+					type={'text'}
+					style={{
+						backgroundColor: 'transparent',
+						color: 'grey',
+						fontSize: '1rem',
+						border: '1px solid gray',
+						borderRadius: '4px',
+						padding: '4px',
+						paddingLeft: '1rem'
+					}}
+					onChange={handleSearch}
+				/>
+				<div
+					style={{
+						position: 'relative',
+						height: '3rem',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center'
+					}}
+				>
+					<img
+						onClick={handleIsOpen}
+						style={{ height: '1.5rem', cursor: 'pointer' }}
+						src="/src/assets/img/cart.svg"
+						alt="Cart"
+					/>
+					<h3
+						style={{
+							textAlign: 'center',
+							color: 'white',
+							position: 'absolute',
+							top: '20%',
+							right: '-70%',
+							fontSize: '0.6rem',
+							backgroundColor: 'red',
+							aspectRatio: '1/1',
+							width: '1rem',
+							height: '1rem',
+							borderRadius: '50%'
+						}}
+					>
+						{props.cart.length}
+					</h3>
+				</div>
+			</div>
+		</>
+	)
+}
