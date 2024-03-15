@@ -1,0 +1,13 @@
+.cat {
+    border: 1px solid rgba(76, 76, 76, 0.8);
+    border-radius: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+
+}
+
+.cat:hover{
+    background-color: #8400fd;
+    border-color: rgba(255, 255, 255, 0.61);
+}

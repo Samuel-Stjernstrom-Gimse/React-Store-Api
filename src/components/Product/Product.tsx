@@ -3,7 +3,7 @@ import './Product.css'
 
 export type ProductProps = {
 	title: string
-	image: string
+	images: string[]
 	price: string
 	description: string
 	category: string
@@ -12,9 +12,14 @@ export type ProductProps = {
 
 export const Product = (props: ProductProps) => {
 	const [readMore, setReadMore] = useState<boolean>(true)
+	const [pictureNum, setPictureNum] = useState(0)
 
 	const handleReadMore = (): void => {
 		setReadMore(!readMore)
+	}
+
+	const handlePictureNum = () => {
+		setPictureNum((prevNum: number): number => (pictureNum === props.images.length - 1 ? 0 : prevNum + 1))
 	}
 
 	const shortDescription: string = props.description.slice(0, 20)
@@ -35,6 +40,7 @@ export const Product = (props: ProductProps) => {
 			}}
 		>
 			<img
+				onClick={handlePictureNum}
 				className={'img'}
 				style={{
 					height: '20rem',
@@ -43,7 +49,7 @@ export const Product = (props: ProductProps) => {
 					borderRadius: '20px',
 					border: '2px solid black'
 				}}
-				src={props.image}
+				src={props.images[pictureNum]}
 				alt=""
 			/>
 

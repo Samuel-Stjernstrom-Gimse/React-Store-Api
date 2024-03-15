@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { ProductProps } from '../Product/Product.tsx'
 
 interface CartProps {
 	cart: ProductProps[]
 	cartShow: 'hidden' | 'visible'
-	setCart: any
+	setCart: Dispatch<SetStateAction<ProductProps[]>>
 }
 
 export const Cart: React.FC<CartProps> = (props: CartProps) => {

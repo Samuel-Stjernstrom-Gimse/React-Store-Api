@@ -46,7 +46,7 @@ export const Navbar = (props: Props) => {
 						color: 'grey',
 						fontSize: '1rem',
 						border: '1px solid gray',
-						borderRadius: '4px',
+						borderRadius: '1rem',
 						padding: '4px',
 						paddingLeft: '1rem'
 					}}

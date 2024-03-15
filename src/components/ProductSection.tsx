@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Product } from './Product/Product.tsx'
-import { Hero } from './Product/Hero.tsx'
+import { Categories } from './Categories.tsx'
 
-interface ProductData {
+export interface ProductData {
 	id: number
 	title: string
 	price: string
@@ -13,11 +13,12 @@ interface ProductData {
 
 interface ProductSectionProps {
 	addToCart: (product: ProductData) => void
-	search: any
+	search: string | undefined
 }
 
 export const ProductSection = (props: ProductSectionProps) => {
 	const [products, setProducts] = useState<ProductData[]>([])
+	const [categories, setCategories] = useState('All')
 
 	useEffect((): void => {
 		getData().then()
@@ -25,7 +26,7 @@ export const ProductSection = (props: ProductSectionProps) => {
 
 	const getData = async (): Promise<void> => {
 		try {
-			const result: Response = await fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=29')
+			const result: Response = await fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=200')
 			const data = await result.json()
 			setProducts(data)
 			console.log(data)
@@ -40,9 +41,13 @@ export const ProductSection = (props: ProductSectionProps) => {
 		return searchText.includes(searchQuery)
 	})
 
+	const filteredAndPossiblySortedArray: ProductData[] = filteredProducts.filter(
+		(product: ProductData) => categories === 'All' || product.category.name === categories
+	)
+
 	return (
 		<>
-			<Hero />
+			<Categories setCategories={setCategories} />
 			<div
 				style={{
 					display: 'grid',
@@ -50,11 +55,11 @@ export const ProductSection = (props: ProductSectionProps) => {
 					gap: '10px'
 				}}
 			>
-				{filteredProducts.map((product: ProductData) => (
+				{filteredAndPossiblySortedArray.map((product: ProductData) => (
 					<Product
 						key={product.id}
 						title={product.title}
-						image={product.images[1]}
+						images={product.images}
 						price={product.price}
 						description={product.description}
 						category={product.category.name}
