@@ -1,22 +1,24 @@
 import React, { Dispatch, SetStateAction } from 'react'
-import { ProductProps } from '../Product/Product.tsx'
 import './Navbar.css'
+import { UnifiedProductType } from '../../pages/Home.tsx'
 
 interface CartProps {
-	cart: ProductProps[]
+	cart: UnifiedProductType[]
 	cartShow: 'hidden' | 'visible'
-	setCart: Dispatch<SetStateAction<ProductProps[]>>
+	setCart: Dispatch<SetStateAction<UnifiedProductType[]>>
 }
 
 export const Cart: React.FC<CartProps> = (props: CartProps) => {
 	let price: number = 0
 
-	props.cart.forEach((item: ProductProps): void => {
+	props.cart.forEach((item: UnifiedProductType): void => {
 		price += parseInt(item.price)
 	})
 
 	const handleRemoveItem = (index: number): void => {
-		const updatedCart: ProductProps[] = props.cart.filter((_: ProductProps, i: number): boolean => i !== index)
+		const updatedCart: UnifiedProductType[] = props.cart.filter(
+			(_: UnifiedProductType, i: number): boolean => i !== index
+		)
 		props.setCart(updatedCart)
 		localStorage.setItem('cart', JSON.stringify(updatedCart))
 	}
@@ -26,7 +28,7 @@ export const Cart: React.FC<CartProps> = (props: CartProps) => {
 			<h1 className={'title-cart'}>
 				Total <span style={{ color: 'rgb(190,190,190)' }}>${price}</span>
 			</h1>
-			{props.cart.map((item: ProductProps, index: number) => (
+			{props.cart.map((item: UnifiedProductType, index: number) => (
 				<div
 					style={{
 						display: 'flex',

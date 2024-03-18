@@ -1,11 +1,11 @@
 import { ProductProps } from '../components/Product/Product.tsx'
 import { Navbar } from '../components/Navbar/Navbar.tsx'
-import { ProductSection } from '../components/ProductSection.tsx'
+import { ProductData, ProductSection } from '../components/ProductSection.tsx'
 import { Cart } from '../components/Navbar/Cart.tsx'
 import { useEffect, useState } from 'react'
-
+export type UnifiedProductType = ProductProps | ProductData
 export const Home = () => {
-	const [cart, setCart] = useState<ProductProps[]>([])
+	const [cart, setCart] = useState<UnifiedProductType[]>([])
 	const [cartOpen, setCartOpen] = useState<boolean>(false)
 	const [search, setSearch] = useState<string>()
 
@@ -16,7 +16,7 @@ export const Home = () => {
 		}
 	}, [])
 
-	const addToCart = (product: ProductProps) => {
+	const addToCart = (product: UnifiedProductType) => {
 		setCart((prevCart) => [...prevCart, product])
 		localStorage.setItem('cart', JSON.stringify([...cart, product]))
 	}

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { MouseEventHandler, useState } from 'react'
 import './Product.css'
 
 export type ProductModalProps = {
@@ -7,7 +7,7 @@ export type ProductModalProps = {
 	price: string
 	description: string
 	category: string
-	addToCart: () => void
+	addToCart: MouseEventHandler<HTMLButtonElement>
 	handleModal: () => void
 }
 

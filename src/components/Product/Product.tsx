@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { MouseEventHandler, useState } from 'react'
 import './Product.css'
 import { ProductModal } from './ProductModal.tsx'
 
@@ -8,7 +8,7 @@ export type ProductProps = {
 	price: string
 	description: string
 	category: string
-	addToCart: () => void
+	addToCart: MouseEventHandler<HTMLButtonElement>
 }
 
 export const Product = (props: ProductProps) => {

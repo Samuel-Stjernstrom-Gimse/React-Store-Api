@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Product, ProductProps } from './Product/Product.tsx'
+import { Product } from './Product/Product.tsx'
 import { Categories } from './Categories.tsx'
+import { UnifiedProductType } from '../pages/Home.tsx'
 
 export interface ProductData {
 	id: number
@@ -12,7 +13,7 @@ export interface ProductData {
 }
 
 interface ProductSectionProps {
-	addToCart: (product: ProductData | ProductProps) => void
+	addToCart: (product: UnifiedProductType) => void
 	search: string | undefined
 	cartOpen: boolean
 }
