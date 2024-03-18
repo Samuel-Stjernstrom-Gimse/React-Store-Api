@@ -58,7 +58,6 @@ export const ProductSection = (props: ProductSectionProps) => {
 			>
 				{filteredAndPossiblySortedArray.map((product: ProductData) => (
 					<Product
-						key={product.id + Math.random()}
 						title={product.title}
 						images={product.images}
 						price={product.price}
