@@ -71,7 +71,7 @@ export const Product = (props: ProductProps) => {
 							{props.description}
 							<span style={{ color: 'white', cursor: 'pointer' }} onClick={handleReadMore}>
 								{' '}
-								read less
+								read less.
 							</span>
 						</p>
 					)}
