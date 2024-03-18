@@ -3,6 +3,7 @@ import './Categories.css'
 
 type Props = {
 	setCategories: Dispatch<SetStateAction<string>>
+	categories: string
 }
 
 export const Categories = (props: Props) => {
@@ -24,22 +25,68 @@ export const Categories = (props: Props) => {
 					marginTop: '2rem'
 				}}
 			>
-				<h3 className={'cat'} onClick={handleCategories('Clothes')}>
+				<h3
+					style={
+						props.categories === 'Clothes'
+							? { backgroundColor: '#8400fd' }
+							: { backgroundColor: 'transparent' }
+					}
+					className={'cat'}
+					onClick={handleCategories('Clothes')}
+				>
 					Clothes
 				</h3>
-				<h3 className={'cat'} onClick={handleCategories('Electronics')}>
+				<h3
+					style={
+						props.categories === 'Electronics'
+							? { backgroundColor: '#8400fd' }
+							: { backgroundColor: 'transparent' }
+					}
+					className={'cat'}
+					onClick={handleCategories('Electronics')}
+				>
 					Electronics
 				</h3>
-				<h3 className={'cat'} onClick={handleCategories('Furniture')}>
+				<h3
+					style={
+						props.categories === 'Furniture'
+							? { backgroundColor: '#8400fd' }
+							: { backgroundColor: 'transparent' }
+					}
+					className={'cat'}
+					onClick={handleCategories('Furniture')}
+				>
 					Furniture
 				</h3>
-				<h3 className={'cat'} onClick={handleCategories('Shoes')}>
+				<h3
+					style={
+						props.categories === 'Shoes'
+							? { backgroundColor: '#8400fd' }
+							: { backgroundColor: 'transparent' }
+					}
+					className={'cat'}
+					onClick={handleCategories('Shoes')}
+				>
 					Shoes
 				</h3>
-				<h3 className={'cat'} onClick={handleCategories('Miscellaneous')}>
+				<h3
+					style={
+						props.categories === 'Miscellaneous'
+							? { backgroundColor: '#8400fd' }
+							: { backgroundColor: 'transparent' }
+					}
+					className={'cat'}
+					onClick={handleCategories('Miscellaneous')}
+				>
 					Miscellaneous
 				</h3>
-				<h3 className={'cat'} onClick={handleCategories('All')}>
+				<h3
+					style={
+						props.categories === 'All' ? { backgroundColor: '#8400fd' } : { backgroundColor: 'transparent' }
+					}
+					className={'cat'}
+					onClick={handleCategories('All')}
+				>
 					All
 				</h3>
 			</div>

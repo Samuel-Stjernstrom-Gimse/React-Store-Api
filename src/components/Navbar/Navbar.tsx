@@ -1,3 +1,5 @@
+import './Navbar.css'
+
 type Props = {
 	isOpen: boolean
 	setIsOpen: (isOpen: boolean) => void
@@ -27,17 +29,26 @@ export const Navbar = (props: Props) => {
 					display: 'flex',
 					alignItems: 'center',
 					color: 'grey',
-					justifyContent: 'center',
-					gap: '2rem',
-					backgroundColor: 'rgb(14,14,14)',
+					gap: '10rem',
+					backgroundColor: 'rgb(11,11,11)',
 					backgroundImage: 'url(src/assets/img/lines.svg)',
 					backgroundSize: 'cover',
-					backgroundBlendMode: 'lighten',
-					boxShadow: '1px 0 10px black',
-					zIndex: '2'
+					zIndex: '2',
+					paddingLeft: '1rem'
 				}}
 			>
-				<h1 style={{ position: 'fixed', left: '1%', color: 'white' }}>REACT STORE</h1>
+				<div
+					onClick={() => window.location.reload()}
+					style={{ display: 'flex', height: '3rem', alignItems: 'center', gap: '1rem', cursor: 'pointer' }}
+				>
+					<img
+						className={'spin-animation'}
+						style={{ height: '2.5rem' }}
+						src="/src/assets/img/logos_react.svg"
+						alt=""
+					/>
+					<h1 style={{ color: 'white', fontSize: '3rem' }}>REACT STORE</h1>
+				</div>
 				<input
 					placeholder={'search'}
 					type={'text'}
@@ -86,6 +97,12 @@ export const Navbar = (props: Props) => {
 					</h3>
 				</div>
 			</div>
+			{props.isOpen ? (
+				<div
+					onClick={handleIsOpen}
+					style={{ position: 'fixed', left: '0', top: '0', zIndex: '1', width: '100vw', height: '100vh' }}
+				></div>
+			) : null}
 		</>
 	)
 }

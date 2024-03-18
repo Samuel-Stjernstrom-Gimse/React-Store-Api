@@ -9,8 +9,6 @@
     height: 2rem;
     padding: 0 20px;
     background-color: rgb(133, 0, 255);
-    font-family: monospace;
-    font-weight: bolder;
     font-size: 1.5rem;
     transition: 0.1s;
 
@@ -28,4 +26,32 @@
 }
 .img{
     transition: 0.2s;
+    height: 20rem;
+    width: 20rem;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+.card-p {
+    width: 25rem;
+    background-color: rgb(23,23,23);
+    margin-top: 2rem;
+    padding: 1rem;
+    color: gray;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title-p {
+    font-family: Arial;
+    text-align: left;
+    height: 4rem;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    width: 18rem;
+    cursor: pointer;
 }

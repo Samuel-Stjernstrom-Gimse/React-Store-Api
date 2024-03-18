@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Product } from './Product/Product.tsx'
+import { Product, ProductProps } from './Product/Product.tsx'
 import { Categories } from './Categories.tsx'
 
 export interface ProductData {
@@ -12,8 +12,9 @@ export interface ProductData {
 }
 
 interface ProductSectionProps {
-	addToCart: (product: ProductData) => void
+	addToCart: (product: ProductData | ProductProps) => void
 	search: string | undefined
+	cartOpen: boolean
 }
 
 export const ProductSection = (props: ProductSectionProps) => {
@@ -29,7 +30,6 @@ export const ProductSection = (props: ProductSectionProps) => {
 			const result: Response = await fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=200')
 			const data = await result.json()
 			setProducts(data)
-			console.log(data)
 		} catch (error) {
 			console.log('error')
 		}
@@ -47,7 +47,7 @@ export const ProductSection = (props: ProductSectionProps) => {
 
 	return (
 		<>
-			<Categories setCategories={setCategories} />
+			<Categories setCategories={setCategories} categories={categories} />
 			<div
 				style={{
 					display: 'grid',
@@ -57,7 +57,7 @@ export const ProductSection = (props: ProductSectionProps) => {
 			>
 				{filteredAndPossiblySortedArray.map((product: ProductData) => (
 					<Product
-						key={product.id}
+						key={product.id + Math.random()}
 						title={product.title}
 						images={product.images}
 						price={product.price}

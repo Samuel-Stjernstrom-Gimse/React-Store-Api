@@ -2,22 +2,31 @@ import { ProductProps } from '../components/Product/Product.tsx'
 import { Navbar } from '../components/Navbar/Navbar.tsx'
 import { ProductSection } from '../components/ProductSection.tsx'
 import { Cart } from '../components/Navbar/Cart.tsx'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const Home = () => {
-	const [cart, setCart] = useState<ProductProps[]>([]) // State for cart
+	const [cart, setCart] = useState<ProductProps[]>([])
 	const [cartOpen, setCartOpen] = useState<boolean>(false)
 	const [search, setSearch] = useState<string>()
 
+	useEffect(() => {
+		const storedCart = localStorage.getItem('cart')
+		if (storedCart) {
+			setCart(JSON.parse(storedCart))
+		}
+	}, [])
+
 	const addToCart = (product: ProductProps) => {
-		setCart([...cart, product])
+		setCart((prevCart) => [...prevCart, product])
+		localStorage.setItem('cart', JSON.stringify([...cart, product]))
 	}
 
 	const cartShow: 'hidden' | 'visible' = cartOpen ? 'visible' : 'hidden'
+
 	return (
 		<>
 			<Navbar isOpen={cartOpen} setIsOpen={setCartOpen} cart={cart} setSearch={setSearch} />
-			<ProductSection addToCart={addToCart} search={search} />
+			<ProductSection cartOpen={cartOpen} addToCart={addToCart} search={search} />
 			<Cart cart={cart} cartShow={cartShow} setCart={setCart} />
 		</>
 	)
