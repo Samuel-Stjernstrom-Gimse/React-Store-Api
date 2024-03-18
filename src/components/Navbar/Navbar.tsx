@@ -31,7 +31,7 @@ export const Navbar = (props: Props) => {
 					color: 'grey',
 					gap: '10rem',
 					backgroundColor: 'rgb(11,11,11)',
-					backgroundImage: 'url(src/assets/img/lines.svg)',
+					backgroundImage: 'url(src/assets/images/lines.svg)',
 					backgroundSize: 'cover',
 					zIndex: '2',
 					paddingLeft: '1rem'
@@ -44,7 +44,7 @@ export const Navbar = (props: Props) => {
 					<img
 						className={'spin-animation'}
 						style={{ height: '2.5rem' }}
-						src="/src/assets/img/logos_react.svg"
+						src="/src/assets/images/logos_react.svg"
 						alt=""
 					/>
 					<h1 style={{ color: 'white', fontSize: '3rem' }}>REACT STORE</h1>
@@ -75,7 +75,7 @@ export const Navbar = (props: Props) => {
 					<img
 						onClick={handleIsOpen}
 						style={{ height: '1.5rem', cursor: 'pointer' }}
-						src="/src/assets/img/cart.svg"
+						src="/src/assets/images/cart.svg"
 						alt="Cart"
 					/>
 					<h3
